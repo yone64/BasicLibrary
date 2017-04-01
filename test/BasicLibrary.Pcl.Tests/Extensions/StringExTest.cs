@@ -18,5 +18,29 @@ namespace BasicLibrary.Pcl.Extensions
             source = null;
             source.IsNullOrEmpty().IsTrue();
         }
+
+        [TestMethod]
+        public void IsNullOrWhiteSpaceTest()
+        {
+            string source = "a";
+            source.IsNullOrWhiteSpace().IsFalse();
+
+            source = "";
+            source.IsNullOrWhiteSpace().IsTrue();
+
+            source = null;
+            source.IsNullOrWhiteSpace().IsTrue();
+
+            source = " ";
+            source.IsNullOrWhiteSpace().IsTrue();
+
+            // 半角スペース × 2
+            source = "  ";
+            source.IsNullOrWhiteSpace().IsTrue();
+
+            // 全角スペース
+            source = "　";
+            source.IsNullOrWhiteSpace().IsTrue();
+        }
     }
 }
