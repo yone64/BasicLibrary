@@ -25,6 +25,35 @@ namespace BasicLibrary.Pcl.Extensions
         /// <returns>value パラメーターが null または System.String.Empty であるか、value が空白文字だけで構成されている場合は true。</returns>
         public static bool IsNullOrWhiteSpace(this string s) => string.IsNullOrWhiteSpace(s);
 
+        /// <summary>
+        /// すべての要素を連結します。各要素の間には指定した区切り文字が入ります。
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        public static string JoinString(this IEnumerable<string> source, string separator) => string.Join(separator, source);
+
+        /// <summary>
+        /// すべての要素を連結します。各要素の間には指定した区切り文字が入ります。
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        public static string JoinString(this string[] source, string separator) => string.Join(separator, source);
+
+        /// <summary>
+        /// すべての要素を連結します。
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string ConcatString(this IEnumerable<string> source) => string.Concat(source);
+
+        /// <summary>
+        /// すべての要素を連結します。
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string ConcatString(this string[] source) => string.Concat(source);
         #region ParseDouble
         /// <summary>
         /// 文字列をDoubleに変換します。失敗した場合はnullが返ります。
