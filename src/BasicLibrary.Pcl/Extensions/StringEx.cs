@@ -48,6 +48,19 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static double ParseDouble(this string s, Func<double> func) => double.TryParse(s, out var d) ? d : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseDoubleThen(this string s, Action<double> action)
+        {
+            if (double.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion
 
         #region ParseFloat
@@ -73,8 +86,20 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static float ParseFloat(this string s, Func<float> func) => float.TryParse(s, out var f) ? f : func();
-        #endregion  
 
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseFloatThen(this string s, Action<float> action)
+        {
+            if (float.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
+        #endregion  
 
         #region ParseInt32
         /// <summary>
@@ -99,6 +124,19 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static int ParseInt32(this string s, Func<int> func) => int.TryParse(s, out var i) ? i : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseInt32Then(this string s, Action<int> action)
+        {
+            if (int.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion  
 
         #region ParseInt64
@@ -124,6 +162,19 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static long ParseInt64(this string s, Func<long> func) => long.TryParse(s, out var n) ? n : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseInt64Then(this string s, Action<long> action)
+        {
+            if (long.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion  
 
         #region ParseDecimal
@@ -149,6 +200,19 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static decimal ParseDecimal(this string s, Func<decimal> func) => decimal.TryParse(s, out var n) ? n : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseDecimalThen(this string s, Action<decimal> action)
+        {
+            if (decimal.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion
 
         #region ParseShort
@@ -174,6 +238,19 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="func"></param>
         /// <returns></returns>
         public static short ParseShort(this string s, Func<short> func) => short.TryParse(s, out var n) ? n : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseShortThen(this string s, Action<short> action)
+        {
+            if (short.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion
 
         #region ParseByte
@@ -190,7 +267,7 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="s"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static byte ParseByte(this string s, byte defaultValue) => Byte.TryParse(s, out var n) ? n : defaultValue;
+        public static byte ParseByte(this string s, byte defaultValue) => byte.TryParse(s, out var n) ? n : defaultValue;
 
         /// <summary>
         /// 文字列をByteに変換します。失敗した場合は引数で与えられたデリゲートが評価され返ります。
@@ -198,7 +275,58 @@ namespace BasicLibrary.Pcl.Extensions
         /// <param name="s"></param>
         /// <param name="func"></param>
         /// <returns></returns>
-        public static byte ParseByte(this string s, Func<byte> func) => Byte.TryParse(s, out var n) ? n : func();
+        public static byte ParseByte(this string s, Func<byte> func) => byte.TryParse(s, out var n) ? n : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseByteThen(this string s, Action<byte> action)
+        {
+            if (byte.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
+        #endregion
+
+        #region ParseBoolean
+        /// <summary>
+        /// 文字列をBooleanに変換します。失敗した場合はnullが返ります。
+        /// </summary>
+        /// <param name="s">テストする文字列</param>
+        /// <returns></returns>
+        public static bool? ParseBoolean(this string s) => bool.TryParse(s, out var n) ? n : default(bool?);
+
+        /// <summary>
+        /// 文字列をBooleanに変換します。失敗した場合は引数で与えられた値が返ります。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static bool ParseBoolean(this string s, bool defaultValue) => bool.TryParse(s, out var n) ? n : defaultValue;
+
+        /// <summary>
+        /// 文字列をBooleanに変換します。失敗した場合は引数で与えられたデリゲートが評価され返ります。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static bool ParseBoolean(this string s, Func<bool> func) => bool.TryParse(s, out var n) ? n : func();
+
+        /// <summary>
+        /// Parseに成功したときのみActionを実行します。
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="action"></param>
+        public static void ParseBooleanThen(this string s, Action<bool> action)
+        {
+            if (bool.TryParse(s, out var n))
+            {
+                action(n);
+            }
+        }
         #endregion
 
     }
