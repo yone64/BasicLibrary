@@ -36,6 +36,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\CollectionEx.cs" />
+    <Compile Include="Extensions\DoubleEx.cs" />
+    <Compile Include="Extensions\EnumerableEx.cs" />
     <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
