@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\PropertyCacheTest.cs" />
     <Compile Include="Extensions\StringExTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
