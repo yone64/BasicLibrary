@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BasicLibrary.Pcl.Core
 {
+    /// <summary>
+    /// PropertyへアクセスするためのDelegateをCacheするためのクラス
+    /// </summary>
+    /// <typeparam name="TObj"></typeparam>
     public class PropertyCache<TObj>
     {
-        private static ConcurrentDictionary<string, Delegate> _getterCache = new ConcurrentDictionary<string, Delegate>();
-        private static ConcurrentDictionary<string, Delegate> _setterCache = new ConcurrentDictionary<string, Delegate>();
+        private static readonly ConcurrentDictionary<string, Delegate> _getterCache = new ConcurrentDictionary<string, Delegate>();
+        private static readonly ConcurrentDictionary<string, Delegate> _setterCache = new ConcurrentDictionary<string, Delegate>();
 
         /// <summary>
         /// PropertyのGetterをFuncとして取得します。
@@ -35,19 +35,18 @@ namespace BasicLibrary.Pcl.Core
                 s => typeof(TObj).GetTypeInfo().GetDeclaredProperty(s).GetMethod.CreateDelegate(typeof(Func<TObj, TProp>)));
         }
 
-
         /// <summary>
         /// PropertyのSetterをActionとして取得します。
         /// </summary>
         /// <typeparam name="TProp"></typeparam>
         /// <param name="exp"></param>
         /// <returns></returns>
-        public static Action<TObj, TProp> SetGetter<TProp>(Expression<Func<TObj, TProp>> exp)
-            => SetGetter<TProp>(GetPropertName(exp));
+        public static Action<TObj, TProp> GetSetter<TProp>(Expression<Func<TObj, TProp>> exp)
+            => GetSetter<TProp>(GetPropertName(exp));
 
-        public static Action<TObj, TProp> SetGetter<TProp>(string propertyName)
+        public static Action<TObj, TProp> GetSetter<TProp>(string propertyName)
         {
-            return (Action<TObj, TProp>)_getterCache.GetOrAdd(propertyName,
+            return (Action<TObj, TProp>)_setterCache.GetOrAdd(propertyName,
                 s => typeof(TObj).GetTypeInfo().GetDeclaredProperty(s).SetMethod.CreateDelegate(typeof(Action<TObj, TProp>)));
         }
 
