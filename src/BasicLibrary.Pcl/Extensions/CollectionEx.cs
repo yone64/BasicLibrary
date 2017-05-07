@@ -27,7 +27,21 @@ namespace BasicLibrary.Pcl.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <param name="collection"></param>
-        public static void AddRange<T>(ICollection<T> source, IEnumerable<T> collection)
+        public static void AddRange<T>(this ICollection<T> source, IEnumerable<T> collection)
+        {
+            foreach (var item in collection)
+            {
+                source.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Collectionに追加します。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="collection"></param>
+        public static void AddRange<T>(this ICollection<T> source, params T[] collection)
         {
             foreach (var item in collection)
             {
