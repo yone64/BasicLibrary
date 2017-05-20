@@ -41,6 +41,7 @@
     <Compile Include="Extensions\CollectionEx.cs" />
     <Compile Include="Extensions\DoubleEx.cs" />
     <Compile Include="Extensions\EnumerableEx.cs" />
+    <Compile Include="Extensions\ObjectEx.cs" />
     <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Core\PropertyCacheTest.cs" />
     <Compile Include="Extensions\CollectionExTest.cs" />
+    <Compile Include="Extensions\ObjectExTest.cs" />
     <Compile Include="Extensions\StringExTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
