@@ -11,7 +11,7 @@ namespace BasicLibrary.Pcl.Extensions
     public class ObjectExTest
     {
         [TestMethod]
-        public void NotNullThenTest()
+        public void InvokeTest()
         {
             string str = null;
 
