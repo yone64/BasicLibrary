@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\NotifyObject.cs" />
+    <Compile Include="Core\MathEx.cs" />
     <Compile Include="Core\PropertyCache.cs" />
     <Compile Include="Extensions\CollectionEx.cs" />
     <Compile Include="Extensions\DoubleEx.cs" />
